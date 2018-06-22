@@ -41,7 +41,7 @@ using (var session = new TripletexSession())
                 _ = await session.CreateOrderLine(orderLine);
                 try
                 {
-                    var invoice = await session.CreateInvoice(order["id"].Value<int>(), date);
+                    var invoice = await session.CreateInvoice(order["id"].Value<int>(), lastDayOfMonth);
                         log.Info($"Created and sent invoice {invoice["invoiceNumber"]}");
                     return invoice;
                 }
