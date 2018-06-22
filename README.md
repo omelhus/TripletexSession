@@ -15,9 +15,8 @@ using (var session = new TripletexSession())
         var productNumber = CloudConfigurationManager.GetSetting("TripletexProductNumber");
         if (await session.CreateSessionToken(consumerKey, employeeKey))
         {
-            var customer = await session.GetCustomerFromCustomerNo(customerNo, "id", "name");
-            var prodNo = productNumber;
-            var product = await session.GetProductFromNumber(prodNo, "id", "name", "vatType(id)",
+            var customer = await session.GetCustomerFromCustomerNo(customerNo, "id", "name");            
+            var product = await session.GetProductFromNumber(productNumber, "id", "name", "vatType(id)",
                 "priceExcludingVatCurrency");
 
             if (customer != null && product != null)
